@@ -1,7 +1,5 @@
 package com.woobadeau.stickman.main;
 
-
-import com.woobadeau.stickman.Enemy;
 import com.woobadeau.stickman.EnemySupplier;
 import com.woobadeau.stickman.StickMan;
 import com.woobadeau.tinyengine.TinyEngine;
@@ -12,15 +10,24 @@ import java.io.IOException;
 
 public class Main {
 
-    private static int spawnRate = 10;
-    private static int spawn = 0;
+    private static TinyEngine tinyEngine;
 
-    public static void main(String args[]) throws IOException {
+    public static void main(String args[]) {
+        tinyEngine = new TinyEngine(800, 600, Main::run);
+        tinyEngine.start();
+    }
 
-        new StickMan();
-        new Spawner<Enemy>(new EnemySupplier(), () -> spawn++ % spawnRate == 0).move(new Vector2D(800, 325));
-        new TinyEngine(800, 600);
+    public static void restart() {
+        tinyEngine.restart();
+    }
 
+    private static void run() {
+        try {
+            new StickMan();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        new Spawner<>(new EnemySupplier(), EnemySupplier::shouldSpawn).move(new Vector2D(800, 325));
     }
 
 }
