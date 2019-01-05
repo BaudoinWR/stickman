@@ -10,9 +10,7 @@ import java.io.IOException;
 public class Bullet extends Sprite {
     Bullet(Bullet.Type type) throws IOException {
         super(ImageIO.read(StickMan.class.getResourceAsStream(type.sprite)), 10);
-        Movement e = new Movement(this);
-        e.speed = new Vector2D(15, 0);
-        this.getThings().add(e);
+        this.addBehavior(new Movement(new Vector2D(15, 0)));
 
     }
 

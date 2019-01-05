@@ -11,9 +11,7 @@ public class Enemy extends Sprite {
 
     Enemy(int nextInt) throws IOException {
         super(ImageIO.read(StickMan.class.getResourceAsStream(Type.values()[nextInt].sprite)), 10);
-        Movement e = new Movement(this);
-        e.speed = new Vector2D(-15, 0);
-        this.getThings().add(e);
+        this.addBehavior(new Movement(new Vector2D(-15, 0)));
 
     }
 
