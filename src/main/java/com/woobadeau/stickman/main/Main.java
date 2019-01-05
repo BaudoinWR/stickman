@@ -1,6 +1,8 @@
 package com.woobadeau.stickman.main;
 
 import com.woobadeau.stickman.EnemySupplier;
+import com.woobadeau.stickman.HighScore;
+import com.woobadeau.stickman.Score;
 import com.woobadeau.stickman.StickMan;
 import com.woobadeau.tinyengine.TinyEngine;
 import com.woobadeau.tinyengine.things.Spawner;
@@ -28,6 +30,9 @@ public class Main {
             throw new RuntimeException(e);
         }
         new Spawner<>(new EnemySupplier(), EnemySupplier::shouldSpawn).move(new Vector2D(800, 325));
+        new Score();
+        new HighScore();
+        Score.currentScore = 0;
     }
 
 }

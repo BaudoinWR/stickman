@@ -1,7 +1,6 @@
 package com.woobadeau.stickman;
 
 import com.woobadeau.stickman.main.Main;
-import com.woobadeau.tinyengine.TinyEngine;
 import com.woobadeau.tinyengine.things.Thing;
 import com.woobadeau.tinyengine.things.physics.Collider;
 import com.woobadeau.tinyengine.things.physics.Movement;
@@ -27,6 +26,7 @@ public class Enemy extends Sprite implements Collider {
             if (((Bullet) thing).type == this.type) {
                 this.destroy();
                 thing.destroy();
+                Score.currentScore++;
                 return;
             }
         }
