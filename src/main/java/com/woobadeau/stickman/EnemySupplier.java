@@ -8,7 +8,7 @@ public class EnemySupplier implements Supplier<Enemy> {
     @Override
     public Enemy get() {
         try {
-            return new Enemy(ThreadLocalRandom.current().nextInt(Enemy.Type.values().length));
+            return new Enemy(ThreadLocalRandom.current().nextInt(Type.values().length));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
