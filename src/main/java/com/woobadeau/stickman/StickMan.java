@@ -5,13 +5,12 @@ import com.woobadeau.tinyengine.things.physics.Collider;
 import com.woobadeau.tinyengine.things.physics.Vector2D;
 import com.woobadeau.tinyengine.things.sprites.Sprite;
 
-import javax.imageio.ImageIO;
 import java.io.IOException;
 
 public class StickMan extends Sprite implements Collider {
 
     public StickMan() throws IOException {
-        super(ImageIO.read(StickMan.class.getResourceAsStream("/dude.png")), 10);
+        super(TinyEngine.uiInterfaceProvider.getImage("/dude.png"), 10);
         move(new Vector2D(100, 300));
         TinyEngine.addKeyBinding("Q", () -> spawn(Type.SQUARE));
         TinyEngine.addKeyBinding("W", () -> spawn(Type.CIRCLE));

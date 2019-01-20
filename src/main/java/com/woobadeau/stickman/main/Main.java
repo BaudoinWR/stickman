@@ -7,6 +7,7 @@ import com.woobadeau.stickman.StickMan;
 import com.woobadeau.tinyengine.TinyEngine;
 import com.woobadeau.tinyengine.things.Spawner;
 import com.woobadeau.tinyengine.things.physics.Vector2D;
+import com.woobadeau.tinyengine.things.ui.swing.SwingUIInterfaceProvider;
 
 import java.io.IOException;
 
@@ -15,7 +16,7 @@ public class Main {
     private static TinyEngine tinyEngine;
 
     public static void main(String args[]) {
-        tinyEngine = new TinyEngine(800, 600, Main::run);
+        tinyEngine = new TinyEngine(800, 600, Main::run, new SwingUIInterfaceProvider());
         tinyEngine.start();
     }
 
