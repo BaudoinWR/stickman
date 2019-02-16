@@ -8,16 +8,14 @@ import com.woobadeau.tinyengine.things.physics.Movement;
 import com.woobadeau.tinyengine.things.physics.Vector2D;
 import com.woobadeau.tinyengine.things.sprites.Sprite;
 
-import java.io.IOException;
-
 public class Enemy extends Sprite implements Collider {
 
     final Type type;
 
-    Enemy(int nextInt) throws IOException {
+    Enemy(int nextInt) {
         super(TinyEngine.uiInterfaceProvider.getImage("/e_"+ Type.values()[nextInt].sprite), 10);
         type = Type.values()[nextInt];
-        this.addBehavior(new Movement(new Vector2D(-15, 0)));
+        this.addBehavior(new Movement(new Vector2D(-15, 0))::move);
     }
 
     @Override

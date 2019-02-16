@@ -9,8 +9,6 @@ import com.woobadeau.tinyengine.things.Spawner;
 import com.woobadeau.tinyengine.things.physics.Vector2D;
 import com.woobadeau.tinyengine.things.ui.swing.SwingUIInterfaceProvider;
 
-import java.io.IOException;
-
 public class Main {
 
     private static TinyEngine tinyEngine;
@@ -25,14 +23,10 @@ public class Main {
     }
 
     private static void run() {
-        try {
-            new StickMan();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        new Spawner<>(new EnemySupplier(), EnemySupplier::shouldSpawn).move(new Vector2D(800, 325));
-        new Score();
-        new HighScore();
+        TinyEngine.spawn(StickMan::new);
+        TinyEngine.spawn(() -> new Spawner<>(EnemySupplier::spawnEnemy, EnemySupplier::shouldSpawn), s -> s.move(new Vector2D(800, 325)));
+        TinyEngine.spawn(Score::new);
+        TinyEngine.spawn(HighScore::new);
         Score.currentScore = 0;
     }
 
