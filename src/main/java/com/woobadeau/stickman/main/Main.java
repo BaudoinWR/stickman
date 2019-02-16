@@ -11,15 +11,13 @@ import com.woobadeau.tinyengine.things.ui.swing.SwingUIInterfaceProvider;
 
 public class Main {
 
-    private static TinyEngine tinyEngine;
-
     public static void main(String args[]) {
-        tinyEngine = new TinyEngine(800, 600, Main::run, new SwingUIInterfaceProvider());
-        tinyEngine.start();
+        TinyEngine.setup(800, 600, Main::run, new SwingUIInterfaceProvider());
+        TinyEngine.start();
     }
 
     public static void restart() {
-        tinyEngine.restart();
+        TinyEngine.restart();
     }
 
     private static void run() {
